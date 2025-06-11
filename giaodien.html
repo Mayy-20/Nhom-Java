@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hannah - Khóa Học</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.23.4/babel.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { margin: 0; }
+    .course-card {
+      transition: all 0.4s ease;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(145deg, #ffffff, #f0f4ff);
+    }
+    .course-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.2);
+    }
+    .lesson-item {
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      background: linear-gradient(to right, #ffffff, #f9fafb);
+    }
+    .lesson-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(to right, #dbeafe, #bfdbfe);
+    }
+    .header-bg {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+    .btn-primary {
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: scale(1.06);
+      box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.2);
+    }
+    .progress-bar {
+      height: 10px;
+      background: #e5e7eb;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, #2563eb, #60a5fa);
+      transition: width 0.6s ease;
+    }
+    .card {
+      border-radius: 20px;
+      box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.15);
+    }
+    .badge {
+      background: linear-gradient(to right, #8b5cf6, #a78bfa);
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      color: white;
+      font-weight: 600;
+    }
+    .section-bg {
+      background: linear-gradient(to bottom, #a78bfa, #8b5cf6);
+    }
+    .header-title {
+      color: #ffffff;
+    }
+    .nav-bar {
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .nav-link {
+      transition: all 0.3s ease;
+      color: #000000;
+    }
+    .nav-link:hover {
+      color: #2563eb;
+      transform: scale(1.05);
+    }
+    .chatbot-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(to right, #2563eb, #60a5fa);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    .chatbot-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+    .chatbot-window {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      height: 400px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+      overflow: hidden;
+    }
+    .chatbot-header {
+      background: linear-gradient(to right, #2563eb, #60a5fa);
+      color: white;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chatbot-body {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      background: #f9fafb;
+    }
+    .chatbot-footer {
+      padding: 12px;
+      border-top: 1px solid #e5e7eb;
+      background: white;
+    }
+    .chat-message {
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 80%;
+    }
+    .user-message {
+      background: #2563eb;
+      color: white;
+      margin-left: auto;
+    }
+    .bot-message {
+      background: #e5e7eb;
+      color: #1f2937;
+    }
+    .logo-square {
+      width: 40px;
+      height: 40px;
+      background: #a78bfa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      margin-right: 12px;
+    }
+    .lesson-badge {
+      background: linear-gradient(to right, #3b82f6, #60a5fa);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      color: white;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .lesson-tag {
+      background: linear-gradient(to right, #10b981, #34d399);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      color: white;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .sidebar {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body className="bg-gray-100 font-sans">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function Navbar({ setPage }) {
+      return (
+        <nav className="nav-bar p-6 text-blue-900">
+          <div className="container mx-auto flex justify-between items-center">
+            <div className="flex items-center">
+              <div className="logo-square">H</div>
+              <span className="text-2xl font-bold" style={{ color: '#a78bfa' }}>Hannah</span>
+            </div>
+            <div className="flex space-x-8">
+              <button className="nav-link text-lg font-medium" onClick={() => setPage('home')}>
+                Trang Chủ
+              </button>
+              <button className="nav-link text-lg font-medium" onClick={() => setPage('courses')}>
+                Khóa Học
+              </button>
+              <a href="#" className="nav-link text-lg font-medium">Dự Án</a>
+              <a href="#" className="nav-link text-lg font-medium">Cộng Đồng</a>
+              <a href="#" className="nav-link text-lg font-medium">Hỗ Trợ</a>
+            </div>
+            <div className="flex items-center">
+              <a href="#" className="nav-link text-lg font-medium flex items-center">
+                <i className="fas fa-user-circle mr-2"></i> Tài Khoản
+              </a>
+            </div>
+          </div>
+        </nav>
+      );
+    }
+
+    function CourseCard({ course, onSelect }) {
+      return (
+        <div className="course-card m-4 flex flex-col w-full max-w-xs">
+          <img src={course.image} alt={course.title} className="w-full h-48 object-cover rounded-t-xl" />
+          <div className="p-6 flex flex-col flex-grow">
+            <h2 className="text-xl font-bold text-gray-800 mb-2">{course.title}</h2>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">{course.description}</p>
+            <div className="flex justify-between items-center mb-4 text-sm text-gray-500">
+              <span className="badge"><i className="fas fa-clock mr-1"></i> {course.totalDuration}</span>
+              <span><i className="fas fa-user-tie mr-1"></i> {course.instructor}</span>
+            </div>
+            <button 
+              onClick={() => onSelect(course)}
+              className="btn-primary bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 flex items-center justify-center"
+            >
+              <i className="fas fa-rocket mr-2"></i> Bắt Đầu Khóa Học
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    function CourseDetail({ course, onBack }) {
+      const [progress, setProgress] = React.useState({
+        "Lập Trình Python": 20,
+        "Lập Trình Java": 10,
+        "Lập Trình Hướng Đối Tượng (OOP)": 5
+      });
+
+      const updateProgress = (courseTitle) => {
+        setProgress(prev => ({
+          ...prev,
+          [courseTitle]: Math.min(prev[courseTitle] + 10, 100)
+        }));
+      };
+
+      const handleLessonClick = (lesson) => {
+        alert(`Đang mở bài học: ${lesson.title}`);
+      };
+
+      const getLessonTag = (index) => {
+        if (index === 0) return "Khởi Đầu";
+        if (index === course.lessons.length - 1) return "Nâng Cao";
+        return "Cơ Bản";
+      };
+
+      return (
+        <div className="min-h-screen">
+          <div className="header-bg py-16 text-white">
+            <div className="container mx-auto px-6">
+              <button 
+                onClick={onBack}
+                className="btn-primary mb-8 bg-white text-blue-900 px-6 py-3 rounded-lg hover:bg-gray-100 flex items-center"
+              >
+                <i className="fas fa-arrow-left mr-2"></i> Quay Lại
+              </button>
+              <div className="flex flex-col md:flex-row gap-10 items-center">
+                <img 
+                  src={course.image} 
+                  alt={course.title} 
+                  className="w-full md:w-2/5 h-64 object-cover rounded-xl shadow-lg" 
+                />
+                <div className="flex-1 text-center md:text-left">
+                  <h1 className="text-4xl font-bold mb-4 header-title">{course.title}</h1>
+                  <p className="text-lg text-blue-100 mb-6">{course.description}</p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-blue-800 bg-opacity-80 p-4 rounded-xl">
+                      <h3 className="text-md font-semibold text-white"><i className="fas fa-level-up-alt mr-2"></i> Cấp Độ</h3>
+                      <p className="text-blue-100 text-sm">{course.level}</p>
+                    </div>
+                    <div className="bg-blue-800 bg-opacity-80 p-4 rounded-xl">
+                      <h3 className="text-md font-semibold text-white"><i className="fas fa-clock mr-2"></i> Thời Lượng</h3>
+                      <p className="text-blue-100 text-sm">{course.totalDuration}</p>
+                    </div>
+                    <div className="bg-blue-800 bg-opacity-80 p-4 rounded-xl">
+                      <h3 className="text-md font-semibold text-white"><i className="fas fa-user-tie mr-2"></i> Giảng Viên</h3>
+                      <p className="text-blue-100 text-sm">{course.instructor}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="container mx-auto py-12 px-6">
+            <div className="card bg-white p-8 flex flex-col md:flex-row gap-8">
+              <div className="md:w-1/3 sidebar">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                  <i className="fas fa-info-circle mr-3 text-blue-600"></i> Thông Tin Khóa Học
+                </h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-700">Mục Tiêu</h3>
+                    <p className="text-gray-600 text-sm">{course.objective}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-700">Yêu Cầu</h3>
+                    <p className="text-gray-600 text-sm">{course.requirements}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-700">Đối Tượng</h3>
+                    <p className="text-gray-600 text-sm">{course.targetAudience}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-700">Tiến Độ Học Tập</h3>
+                    <div className="progress-bar">
+                      <div 
+                        className="progress-fill" 
+                        style={{ width: `${progress[course.title]}%` }}
+                      ></div>
+                    </div>
+                    <p className="text-gray-600 text-sm mt-3">{progress[course.title]}% hoàn thành</p>
+                    <button 
+                      onClick={() => updateProgress(course.title)}
+                      className="btn-primary mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 flex items-center w-full"
+                    >
+                      <i className="fas fa-check-circle mr-2"></i> Đánh Dấu Tiến Độ
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="md:w-2/3">
+                <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                  <i className="fas fa-book-open mr-3 text-blue-600"></i> Danh Sách Bài Học
+                </h2>
+                <ul className="space-y-3 max-w-4xl mx-auto">
+                  {course.lessons.map((lesson, index) => (
+                    <li
+                      key={index}
+                      className="lesson-item p-3 border-l-4 border-blue-600 cursor-pointer"
+                      onClick={() => handleLessonClick(lesson)}
+                    >
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-center md:gap-1 gap-2">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className="text-base md:text-lg font-medium text-gray-800 truncate">{lesson.title}</h3>
+                            <span className="lesson-badge">
+                              <i className="fas fa-lightbulb mr-1"></i> Bài {index + 1}
+                            </span>
+                          </div>
+                          <p className="text-gray-600 text-xs md:text-sm mt-1 truncate">
+                            <i className="fas fa-hourglass-half mr-2"></i> {lesson.duration} • {lesson.description}
+                          </p>
+                          <div className="flex flex-wrap gap-1 mt-1">
+                            <span className="lesson-tag">
+                              <i className="fas fa-tag mr-1"></i> {getLessonTag(index)}
+                            </span>
+                            <span className="lesson-tag">
+                              <i className="fas fa-bolt mr-1"></i> Lý Thuyết
+                            </span>
+                            <span className="lesson-tag">
+                              <i className="fas fa-star mr-1"></i> Mức độ: {index < 2 ? "Dễ" : index === course.lessons.length - 1 ? "Khó" : "Trung Bình"}
+                            </span>
+                          </div>
+                        </div>
+                        <button className="btn-primary bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 w-auto md:ml-2 mt-2 md:mt-0">
+                          <i className="fas fa-play mr-2"></i> Học Ngay
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function CoursesList({ setPage }) {
+      const courses = [
+        {
+          title: "Lập Trình Python",
+          description: "Học Python từ cơ bản đến nâng cao, bao gồm cấu trúc dữ liệu, xử lý tệp, và hơn thế nữa.",
+          image: "Hình ảnh/python.jpg",
+          level: "Cơ Bản đến Nâng Cao",
+          totalDuration: "10 giờ",
+          instructor: "Nguyễn Văn A",
+          objective: "Làm chủ ngôn ngữ lập trình Python để phát triển ứng dụng và phân tích dữ liệu.",
+          requirements: "Không cần kinh nghiệm trước, chỉ cần máy tính và sự tò mò.",
+          targetAudience: "Người mới bắt đầu, lập trình viên muốn học Python.",
+          lessons: [
+            { title: "Giới Thiệu Python", duration: "30 phút", description: "Tổng quan về cú pháp và cài đặt Python." },
+            { title: "Biến và Kiểu Dữ Liệu", duration: "45 phút", description: "Hiểu về các kiểu dữ liệu và biến." },
+            { title: "Cấu Trúc Điều Khiển", duration: "1 giờ", description: "Tìm hiểu câu lệnh if, vòng lặp, v.v." },
+            { title: "Hàm và Module", duration: "1 giờ", description: "Tạo mã tái sử dụng với hàm." },
+            { title: "Cấu Trúc Dữ Liệu", duration: "1.5 giờ", description: "Khám phá danh sách, tuple, và từ điển." }
+          ]
+        },
+        {
+          title: "Lập Trình Java",
+          description: "Làm chủ Java với các dự án thực tế, bao gồm cú pháp, OOP, và xây dựng ứng dụng mạnh mẽ.",
+          image: "Hình ảnh/java.jpg",
+          level: "Trung Cấp",
+          totalDuration: "12 giờ",
+          instructor: "Trần Thị B",
+          objective: "Xây dựng ứng dụng Java mạnh mẽ và hiểu sâu về lập trình hướng đối tượng.",
+          requirements: "Kiến thức cơ bản về lập trình là một lợi thế.",
+          targetAudience: "Lập trình viên trung cấp, sinh viên CNTT.",
+          lessons: [
+            { title: "Cơ Bản Java", duration: "40 phút", description: "Cài đặt và cú pháp cơ bản của Java." },
+            { title: "Lớp và Đối Tượng", duration: "1 giờ", description: "Khái niệm cốt lõi của OOP trong Java." },
+            { title: "Kế Thừa", duration: "1 giờ", description: "Tìm hiểu cách mở rộng lớp." },
+            { title: "Xử Lý Ngoại Lệ", duration: "50 phút", description: "Quản lý lỗi hiệu quả." },
+            { title: "Bộ Sưu Tập Java", duration: "1.5 giờ", description: "Làm việc với mảng, danh sách, và bản đồ." }
+          ]
+        },
+        {
+          title: "Lập Trình Hướng Đối Tượng (OOP)",
+          description: "Hiểu các nguyên tắc OOP như kế thừa, đa hình, và đóng gói với ví dụ thực tế.",
+          image: "Hình ảnh/OOP.jpg",
+          level: "Cơ Bản đến Trung Cấp",
+          totalDuration: "8 giờ",
+          instructor: "Lê Văn C",
+          objective: "Nắm vững các nguyên tắc OOP để viết mã sạch và tái sử dụng.",
+          requirements: "Kiến thức lập trình cơ bản, tư duy logic.",
+          targetAudience: "Người mới học OOP, lập trình viên muốn cải thiện kỹ năng.",
+          lessons: [
+            { title: "OOP Là Gì?", duration: "30 phút", description: "Giới thiệu về khái niệm OOP." },
+            { title: "Lớp và Đối Tượng", duration: "45 phút", description: "Xây dựng nền tảng của OOP." },
+            { title: "Kế Thừa", duration: "1 giờ", description: "Tái sử dụng mã với kế thừa." },
+            { title: "Đa Hình", duration: "1 giờ", description: "Mã linh hoạt với đa hình." },
+            { title: "Đóng Gói", duration: "50 phút", description: "Bảo vệ dữ liệu với đóng gói." }
+          ]
+        }
+      ];
+
+      return (
+        <div className="section-bg py-16 px-6">
+          <h1 className="text-5xl font-bold text-center header-title mb-12 flex items-center justify-center">
+            <i className="fas fa-graduation-cap mr-4 text-white"></i> Khóa Học Của Chúng Tôi
+          </h1>
+          <div className="container mx-auto flex flex-wrap justify-center">
+            {courses.map((course, index) => (
+              <CourseCard
+                key={index}
+                course={course}
+                onSelect={() => setPage({ type: 'course', data: course })}
+              />
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    function HomePage({ setPage }) {
+      return (
+        <div className="section-bg py-16 px-6">
+          <h1 className="text-5xl font-bold text-center header-title mb-6 flex items-center justify-center">
+            <i className="fas fa-home mr-4 text-white"></i> Chào Mừng Đến Với Hannah
+          </h1>
+          <p className="text-xl text-gray-100 text-center max-w-3xl mx-auto mb-8">
+            Nền tảng học tập trực tuyến hàng đầu, giúp bạn làm chủ các kỹ năng lập trình với các khóa học chất lượng cao.
+          </p>
+          <div className="text-center">
+            <button 
+              className="btn-primary bg-purple-600 text-white py-3 px-8 rounded-lg hover:bg-purple-700"
+              onClick={() => setPage('courses')}
+            >
+              Khám Phá Khóa Học
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    function Chatbot() {
+      const [isOpen, setIsOpen] = React.useState(false);
+      const [messages, setMessages] = React.useState([
+        { sender: "bot", text: "Chào bạn! Tôi là chatbot của Hannah. Hôm nay tôi có thể giúp gì cho bạn?" }
+      ]);
+      const [input, setInput] = React.useState("");
+
+      const handleSend = () => {
+        if (!input.trim()) return;
+        setMessages([...messages, { sender: "user", text: input }]);
+        setTimeout(() => {
+          setMessages(prev => [...prev, { sender: "bot", text: "Cảm ơn câu hỏi của bạn! Tôi sẽ hỗ trợ ngay. Bạn cần giúp về khóa học nào?" }]);
+        }, 1000);
+        setInput("");
+      };
+
+      const handleKeyPress = (e) => {
+        if (e.key === "Enter") handleSend();
+      };
+
+      return (
+        <>
+          <div className="chatbot-btn" onClick={() => setIsOpen(!isOpen)}>
+            <i className="fas fa-comment text-2xl"></i>
+          </div>
+          {isOpen && (
+            <div className="chatbot-window">
+              <div className="chatbot-header">
+                <span className="text-lg font-semibold">Hannah Chatbot</span>
+                <button onClick={() => setIsOpen(false)} className="text-white hover:text-gray-200">
+                  <i className="fas fa-times"></i>
+                </button>
+              </div>
+              <div className="chatbot-body">
+                {messages.map((msg, index) => (
+                  <div key={index} className={`chat-message ${msg.sender === "user" ? "user-message" : "bot-message"}`}>
+                    {msg.text}
+                  </div>
+                ))}
+              </div>
+              <div className="chatbot-footer">
+                <div className="flex">
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    className="flex-1 p-2 rounded-l-lg border border-gray-300 focus:outline-none focus:border-blue-600"
+                    placeholder="Nhập câu hỏi của bạn..."
+                  />
+                  <button
+                    onClick={handleSend}
+                    className="btn-primary bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700"
+                  >
+                    <i className="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+      );
+    }
+
+    function App() {
+      const [page, setPage] = React.useState('home');
+
+      return (
+        <div>
+          <Navbar setPage={setPage} />
+          {page === 'home' && <HomePage setPage={setPage} />}
+          {page === 'courses' && <CoursesList setPage={setPage} />}
+          {page.type === 'course' && (
+            <CourseDetail 
+              course={page.data} 
+              onBack={() => setPage('courses')} 
+            />
+          )}
+          <Chatbot />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
