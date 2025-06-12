@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hannah - Cộng đồng</title>
+     <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+  </head>
+  <body>
+    <div th:replace="~{header :: header(page='community')}"></div>
+
+    <section class="support-hero">
+      <div class="container">
+        <h1>Hannah Cộng đồng</h1>
+        <p>
+          Tham gia cộng đồng học viên sôi động, chia sẻ kiến thức và cùng nhau
+          phát triển.
+        </p>
+      </div>
+    </section>
+
+    <section class="quick-help">
+      <div class="container">
+        <h2 class="section-title">Cộng đồng</h2>
+        <div class="filter-tabs">
+          <button class="filter-tab active">Home</button>
+          <button class="filter-tab">Leaderboards</button>
+          <button class="filter-tab">Project Showcase</button>
+          <button class="filter-tab">Monthly Challenge</button>
+          <button class="filter-tab">#30NitesOfCode</button>
+        </div>
+        <div class="filter-tabs">
+          <h3>Channels</h3>
+          <button class="filter-tab">General</button>
+          <button class="filter-tab">Question of the Week</button>
+          <button class="filter-tab">Introductions</button>
+          <button class="filter-tab">Python</button>
+          <button class="filter-tab">JavaScript</button>
+          <button class="filter-tab">Web Development</button>
+          <button class="filter-tab">Career</button>
+          <button class="filter-tab">Memes</button>
+          <button class="filter-tab">Pets</button>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <p><strong>Gold rank</strong> @sonny · Jun 9th, 2025</p>
+            <h3>June: Build-A-Bot Challenge 🤖✨</h3>
+            <p>
+              Beep bop boop. Ever wished you had your own R2-D2 or WALL-E? Now’s
+              your chance. This month’s challenge is to build your own chatbot!
+            </p>
+            <p>Submissions due in 20 days, 11 hrs, 15 min</p>
+            <a href="/submit" class="help-link">Submit an entry</a>
+            <p>25 likes · 9 comments</p>
+          </div>
+          <div class="help-card">
+            <p><strong>Gold rank</strong> @asiqur · Jun 9th, 2025</p>
+            <h3>Changelog (Mon 6/2 - Sun 6/8)</h3>
+            <p>
+              Curriculum: Published SQL Bonus Article. Product: Added
+              Walkthrough Videos for Python exercises. Community: Launched June:
+              Build-A-Bot Challenge...
+            </p>
+            <p>6 likes</p>
+          </div>
+          <div class="help-card">
+            <p><strong>Silver rank</strong> @RUCHIKAR · Jun 9th, 2025</p>
+            <h3>Leaving this platform</h3>
+            <p>
+              I really like this platform, especially because it breaks down
+              topics into small, bite-sized pieces...
+            </p>
+            <p>6 likes · 3 comments</p>
+          </div>
+          <div class="help-card">
+            <p><strong>Bronze rank</strong> @MatticusLong · Jun 7th, 2025</p>
+            <h3>Just wanted to say Hello World!</h3>
+            <p>
+              This platform has been amazing so far. Looking forward to spending
+              more time here.
+            </p>
+            <p>6 likes</p>
+          </div>
+          <div class="help-card">
+            <p><strong>Silver rank</strong> @devtaket · Jun 5th, 2025</p>
+            <h3>Final HTML Project – Pixel Wizard Restaurant</h3>
+            <p>
+              For my final HTML project, I created a simple yet visually
+              striking restaurant website...
+            </p>
+            <a href="/view-code" class="help-link">View Code</a> |
+            <a href="/live-demo" class="help-link">Live Demo</a>
+            <p>51 likes · 10 comments</p>
+          </div>
+        </div>
+        <h2 class="section-title">Hannah News</h2>
+        <div class="help-grid">
+          <div class="help-card">
+            <p>May 27th | Blog</p>
+            <h3>What to Do When You Don't Have a Tech Internship</h3>
+            <a href="/blog/internship" class="help-link">Read More</a>
+          </div>
+          <div class="help-card">
+            <p>May 20th | Blog</p>
+            <h3>A Day in the Life of Naomi</h3>
+            <a href="/blog/naomi" class="help-link">Read More</a>
+          </div>
+          <div class="help-card">
+            <p>May 12th | Blog</p>
+            <h3>April Changelog</h3>
+            <a href="/blog/changelog" class="help-link">Read More</a>
+          </div>
+        </div>
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="help-grid">
+          <div class="help-card">
+            <p>May 29th | 3:00pm ET</p>
+            <h3>Lightning Talk Presentation Day</h3>
+            <p>
+              Working on a lightning talk for the May challenge? Come try
+              presenting it live.
+            </p>
+            <a href="/event/lightning-talk" class="help-link">Join Event</a>
+          </div>
+          <div class="help-card">
+            <p>Jun 4th | 3:00pm ET</p>
+            <h3>Club Workshop - LinkedIn Profile</h3>
+            <p>
+              Join us for a special Hannah Club event to improve your LinkedIn
+              profile!
+            </p>
+            <a href="/event/linkedin" class="help-link">Join Event</a>
+          </div>
+          <div class="help-card">
+            <p>Jun 26th | 3:00pm ET</p>
+            <h3>Meet 'n Greet</h3>
+            <p>
+              Come hang out with other Hannah learners in a laid-back setting.
+            </p>
+            <a href="/event/meet-greet" class="help-link">Join Event</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div th:replace="~{footer :: footer}"></div>
+    <div th:replace="~{chat-modal :: chat-modal}"></div>
+  </body>
+</html>

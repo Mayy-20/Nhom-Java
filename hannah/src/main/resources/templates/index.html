@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannah - Trang chủ</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+    <script th:src="@{/js/app.js}" src="/js/app.js"></script>
+</head>
+<body>
+    <div th:replace="~{header :: header(page='home')}"></div>
+
+    <section class="hero">
+        <div class="hero-content container">
+            <h1>Học lập trình cùng Hannah</h1>
+            <p>Khám phá thế giới công nghệ phần mềm với các khóa học tương tác, thực hành và cộng đồng hỗ trợ tận tình</p>
+            <a href="courses.html" class="btn btn-primary">Bắt đầu học ngay</a>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Khóa học nổi bật</h2>
+            <div class="category-tabs">
+                <button class="tab-btn active">Phổ biến</button>
+                <button class="tab-btn">Phát triển Web</button>
+                <button class="tab-btn">Khoa học dữ liệu</button>
+                <button class="tab-btn">Mobile App</button>
+                <button class="tab-btn">AI & Machine Learning</button>
+            </div>
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-content">
+                        <span class="course-type">KHÓA HỌC</span>
+                        <h3 class="course-title">Python cơ bản</h3>
+                        <p class="course-desc">Lập trình Python từ cơ bản đến nâng cao, học nhanh qua project thực tế.</p>
+                        <div class="course-level">
+                            <div class="level-icon"></div>
+                            <span>Người mới bắt đầu</span>
+                        </div>
+                        <a href="courses.html" class="btn btn-primary">Học ngay</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-content">
+                        <span class="course-type">KHÓA HỌC</span>
+                        <h3 class="course-title">JavaScript nâng cao</h3>
+                        <p class="course-desc">Khai thác async/await, closure và Xử lý DOM trong dự án web thực tế.</p>
+                        <div class="course-level">
+                            <div class="level-icon"></div>
+                            <span>Trung cấp</span>
+                        </div>
+                        <a href="courses.html" class="btn btn-primary">Học ngay</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-content">
+                        <span class="course-type">KHÓA HỌC</span>
+                        <h3 class="course-title">Thiết kế Web cơ bản</h3>
+                        <p class="course-desc">Học HTML, CSS từ đầu và tạo trang web cá nhân đầu tiên của bạn.</p>
+                        <div class="course-level">
+                            <div class="level-icon"></div>
+                            <span>Người mới bắt đầu</span>
+                        </div>
+                        <a href="courses.html" class="btn btn-primary">Học ngay</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-content">
+                        <span class="course-type">KHÓA HỌC</span>
+                        <h3 class="course-title">ReactJS chuyên sâu</h3>
+                        <p class="course-desc">Phát triển ứng dụng SPA với React Hooks, Context API và Redux.</p>
+                        <div class="course-level">
+                            <div class="level-icon"></div>
+                            <span>Trung cấp</span>
+                        </div>
+                        <a href="courses.html" class="btn btn-primary">Học ngay</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-content">
+                        <span class="course-type">KHÓA HỌC</span>
+                        <h3 class="course-title">SQL cơ bản</h3>
+                        <p class="course-desc">Làm việc với cơ sở dữ liệu, viết truy vấn SELECT, JOIN, và GROUP BY.</p>
+                        <div class="course-level">
+                            <div class="level-icon"></div>
+                            <span>Người mới bắt đầu</span>
+                        </div>
+                        <a href="courses.html" class="btn btn-primary">Học ngay</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-content">
+                        <span class="course-type">KHÓA HỌC</span>
+                        <h3 class="course-title">Machine Learning</h3>
+                        <p class="course-desc">Xây dựng mô hình dự đoán với Scikit-Learn, Pandas và NumPy.</p>
+                        <div class="course-level">
+                            <div class="level-icon"></div>
+                            <span>Nâng cao</span>
+                        </div>
+                        <a href="courses.html" class="btn btn-primary">Học ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title">Hannah trong con số</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Khóa học chất lượng</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Tỷ lệ hoàn thành cao</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Hỗ trợ học tập</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div th:replace="~{footer :: footer}"></div>
+    <div th:replace="~{chat-modal :: chat-modal}"></div>
+</body>
+</html>

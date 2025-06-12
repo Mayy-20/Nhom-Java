@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+  </head>
+  <body>
+    <header class="header" th:fragment="header(page)">
+      <div class="nav-container">
+        <a href="/" class="logo">Hannah</a>
+        <nav class="nav-menu">
+          <a th:classappend="${page == 'home'} ? 'active'" href="/"
+            >Trang chủ</a
+          >
+          <a th:classappend="${page == 'courses'} ? 'active'" href="/courses"
+            >Khóa học</a
+          >
+          <a
+            th:classappend="${page == 'community'} ? 'active'"
+            href="/community"
+            >Cộng đồng</a
+          >
+          <a th:classappend="${page == 'support'} ? 'active'" href="/support"
+            >Trợ giúp</a
+          >
+          <a th:classappend="${page == 'about'} ? 'active'" href="/about"
+            >Về chúng tôi</a
+          >
+        </nav>
+        <div class="auth-buttons">
+          <a href="/login" class="btn btn-secondary">Đăng nhập</a>
+          <a href="/register" class="btn btn-primary">Đăng ký</a>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>

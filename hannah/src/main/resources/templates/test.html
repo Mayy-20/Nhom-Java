@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khóa Học - Hiện Đại & Sáng Tạo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0f0f0, #ffffff);
+      padding: 2rem;
+      color: #333;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .search-filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    #searchInput, #levelFilter {
+      padding: 0.75rem 1rem;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      min-width: 240px;
+      transition: 0.3s ease;
+    }
+
+    #searchInput:focus, #levelFilter:focus {
+      border-color: #2575fc;
+      box-shadow: 0 0 10px rgba(37, 117, 252, 0.2);
+    }
+
+    .courses-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .course-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .course-content {
+      padding: 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .course-content h2 {
+      font-size: 1.25rem;
+      color: #2575fc;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+    }
+
+    .level {
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      background: #eef;
+      color: #2575fc;
+      font-size: 0.85rem;
+    }
+
+    .price {
+      color: #ff5722;
+    }
+
+    button {
+      padding: 0.6rem;
+      border: none;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #2575fc, #6a11cb);
+    }
+
+    .course-card[data-level="advanced"] .level {
+  background: #fee;
+  color: #e53935;
+}
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1><i class="fas fa-graduation-cap"></i> TÀI LIỆU HỌC TẬP</h1>
+    <div class="search-filter-container">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm khóa học..." onkeyup="filterCourses()">
+      <select id="levelFilter" onchange="filterCourses()">
+        <option value="all">Tất cả cấp độ</option>
+        <option value="beginner">Người mới bắt đầu</option>
+        <option value="intermediate">Trung cấp</option>
+         <option value="advanced">Nâng cao</option>
+      </select>
+    </div>
+  </header>
+
+  <section class="courses-section" id="courseList">
+    <div class="course-card" data-title="Python cơ bản" data-level="beginner">
+      <img src="python.png" alt="Python" class="course-image" />
+      <div class="course-content">
+        <h2><i class="fab fa-python"></i> Python cơ bản</h2>
+        <p>Lập trình Python từ cơ bản đến nâng cao, học nhanh qua project thực tế.</p>
+        <div class="info-row">
+          <span class="level">Người mới bắt đầu</span>
+          <span class="price">Miễn phí</span>
+        </div>
+        <button>Học ngay</button>
+      </div>
+    </div>
+
+    <div class="course-card" data-title="JavaScript nâng cao" data-level="intermediate">
+      <img src="javascript.png" alt="JavaScript" class="course-image" />
+      <div class="course-content">
+        <h2><i class="fab fa-js"></i> JavaScript nâng cao</h2>
+        <p>Khai thác async/await, closure và Xử lý DOM trong dự án web thực tế.</p>
+        <div class="info-row">
+          <span class="level">Trung cấp</span>
+          <span class="price">Miễn phí</span>
+        </div>
+        <button>Học ngay</button>
+      </div>
+    </div>
+
+    <div class="course-card" data-title="Thiết kế Web cơ bản" data-level="beginner">
+  <img src="web-design.png" alt="Web Design" class="course-image" />
+  <div class="course-content">
+    <h2><i class="fas fa-laptop-code"></i> Thiết kế Web cơ bản</h2>
+    <p>Học HTML, CSS từ đầu và tạo trang web cá nhân đầu tiên của bạn.</p>
+    <div class="info-row">
+      <span class="level">Người mới bắt đầu</span>
+      <span class="price">Miễn phí</span>
+    </div>
+    <button>Học ngay</button>
+  </div>
+</div>
+
+<div class="course-card" data-title="ReactJS chuyên sâu" data-level="intermediate">
+  <img src="react.png" alt="ReactJS" class="course-image" />
+  <div class="course-content">
+    <h2><i class="fab fa-react"></i> ReactJS chuyên sâu</h2>
+    <p>Phát triển ứng dụng SPA với React Hooks, Context API và Redux.</p>
+    <div class="info-row">
+      <span class="level">Trung cấp</span>
+      <span class="price">Miễn phí</span>
+    </div>
+    <button>Học ngay</button>
+  </div>
+</div>
+
+<div class="course-card" data-title="SQL cho người mới bắt đầu" data-level="beginner">
+  <img src="sql.png" alt="SQL" class="course-image" />
+  <div class="course-content">
+    <h2><i class="fas fa-database"></i> SQL cơ bản</h2>
+    <p>Làm việc với cơ sở dữ liệu, viết truy vấn SELECT, JOIN, và GROUP BY.</p>
+    <div class="info-row">
+      <span class="level">Người mới bắt đầu</span>
+      <span class="price">Miễn phí</span>
+    </div>
+    <button>Học ngay</button>
+  </div>
+</div>
+
+<div class="course-card" data-title="Phân tích dữ liệu với Excel" data-level="beginner">
+  <img src="excel.png" alt="Excel" class="course-image" />
+  <div class="course-content">
+    <h2><i class="fas fa-chart-line"></i> Phân tích dữ liệu với Excel</h2>
+    <p>Thành thạo Pivot Table, công thức nâng cao và biểu đồ động.</p>
+    <div class="info-row">
+      <span class="level">Người mới bắt đầu</span>
+      <span class="price">Miễn phí</span>
+    </div>
+    <button>Học ngay</button>
+  </div>
+</div>
+
+<div class="course-card" data-title="Node.js thực chiến" data-level="intermediate">
+  <img src="nodejs.png" alt="Node.js" class="course-image" />
+  <div class="course-content">
+    <h2><i class="fab fa-node-js"></i> Node.js thực chiến</h2>
+    <p>Xây dựng REST API và hệ thống xác thực người dùng bằng Express.js.</p>
+    <div class="info-row">
+      <span class="level">Trung cấp</span>
+      <span class="price">Miễn phí</span>
+    </div>
+    <button>Học ngay</button>
+  </div>
+</div>
+
+<div class="course-card" data-title="Thiết kế UI/UX cơ bản" data-level="beginner">
+  <img src="uiux.png" alt="UI/UX" class="course-image" />
+  <div class="course-content">
+    <h2><i class="fas fa-palette"></i> Thiết kế UI/UX</h2>
+    <p>Nguyên lý thiết kế giao diện người dùng đẹp, đơn giản và thân thiện.</p>
+    <div class="info-row">
+      <span class="level">Người mới bắt đầu</span>
+      <span class="price">Miễn phí</span>
+    </div>
+    <button>Học ngay</button>
+  </div>
+</div>
+
+<div class="course-card" data-title="Machine Learning với Python" data-level="advanced">
+  <img src="ml.png" alt="Machine Learning" class="course-image" />
+  <div class="course-content">
+    <h2><i class="fas fa-microchip"></i> Machine Learning</h2>
+    <p>Xây dựng mô hình dự đoán với Scikit-Learn, Pandas và NumPy.</p>
+    <div class="info-row">
+      <span class="level">Nâng cao</span>
+      <span class="price">Miễn phí</span>
+    </div>
+    <button>Học ngay</button>
+  </div>
+</div>
+
+<div class="course-card" data-title="Photoshop cho người mới" data-level="beginner">
+  <img src="photoshop.png" alt="Photoshop" class="course-image" />
+  <div class="course-content">
+    <h2><i class="fas fa-image"></i> Photoshop cơ bản</h2>
+    <p>Chỉnh sửa ảnh, thiết kế banner và poster với Photoshop.</p>
+    <div class="info-row">
+      <span class="level">Người mới bắt đầu</span>
+      <span class="price">Miễn phí</span>
+    </div>
+    <button>Học ngay</button>
+  </div>
+</div>
+
+<div class="course-card" data-title="Quản lý dự án với Agile" data-level="intermediate">
+  <img src="agile.png" alt="Agile" class="course-image" />
+  <div class="course-content">
+    <h2><i class="fas fa-tasks"></i> Agile & Scrum</h2>
+    <p>Áp dụng mô hình Agile để quản lý nhóm và phát triển phần mềm linh hoạt.</p>
+    <div class="info-row">
+      <span class="level">Trung cấp</span>
+      <span class="price">Miễn phí</span>
+    </div>
+    <button>Học ngay</button>
+  </div>
+</div>
+
+<div class="course-card" data-title="Lập trình hệ thống nâng cao" data-level="advanced">
+  <img src="system-programming.png" alt="System Programming" class="course-image" />
+  <div class="course-content">
+    <h2><i class="fas fa-microchip"></i> Lập trình hệ thống nâng cao</h2>
+    <p>Hiểu sâu về quản lý bộ nhớ, tiến trình và giao tiếp IPC trong hệ điều hành Unix/Linux.</p>
+    <div class="info-row">
+      <span class="level">Nâng cao</span>
+      <span class="price">Miễn phí</span>
+    </div>
+    <button>Học ngay</button>
+  </div>
+</div>
+
+
+  </section>
+
+  <script>
+    function filterCourses() {
+      const keyword = document.getElementById('searchInput').value.toLowerCase();
+      const level = document.getElementById('levelFilter').value;
+      const cards = document.querySelectorAll('.course-card');
+
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        const cardLevel = card.getAttribute('data-level');
+
+        const matchText = title.includes(keyword);
+        const matchLevel = (level === 'all' || cardLevel === level);
+
+        if (matchText && matchLevel) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

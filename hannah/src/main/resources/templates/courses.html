@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hannah - Khóa học</title>
+     <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+  </head>
+  <body>
+    <div th:replace="~{header :: header(page='courses')}"></div>
+
+    <section class="support-hero">
+      <div class="container">
+        <h1>Khóa học</h1>
+        <p>
+          Khám phá các khóa học lập trình và công nghệ miễn phí, phù hợp với mọi
+          trình độ.
+        </p>
+      </div>
+    </section>
+
+    <section class="quick-help">
+      <div class="container">
+        <h2 class="section-title">TÀI LIỆU HỌC TẬP</h2>
+        <div class="filter-tabs">
+          <button class="filter-tab active">Tất cả cấp độ</button>
+          <button class="filter-tab">Người mới bắt đầu</button>
+          <button class="filter-tab">Trung cấp</button>
+          <button class="filter-tab">Nâng cao</button>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <h3>Python cơ bản</h3>
+            <p>
+              Lập trình Python từ cơ bản đến nâng cao, học nhanh qua project
+              thực tế.
+            </p>
+            <p><strong>Người mới bắt đầu</strong> · Miễn phí</p>
+            <a href="/courses/python" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            ‘
+            <h3>JavaScript nâng cao</h3>
+            <p>
+              Khai thác async/await, closure và Xử lý DOM trong dự án web thực
+              tế.
+            </p>
+            <p><strong>Trung cấp</strong> · Miễn phí</p>
+            <a href="/courses/javascript" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            <h3>Thiết kế Web cơ bản</h3>
+            <p>
+              Học HTML, CSS từ đầu và tạo trang web cá nhân đầu tiên của bạn.
+            </p>
+            <p><strong>Người mới bắt đầu</strong> · Miễn phí</p>
+            <a href="/courses/html-css" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            <h3>ReactJS chuyên sâu</h3>
+            <p>
+              Phát triển ứng dụng SPA với React Hooks, Context API và Redux.
+            </p>
+            <p><strong>Trung cấp</strong> · Miễn phí</p>
+            <a href="/courses/react" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            <h3>SQL cơ bản</h3>
+            <p>
+              Làm việc với cơ sở dữ liệu, viết truy vấn SELECT, JOIN, và GROUP
+              BY.
+            </p>
+            <p><strong>Người mới bắt đầu</strong> · Miễn phí</p>
+            <a href="/courses/sql" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            <h3>Phân tích dữ liệu với Excel</h3>
+            <p>Thành thạo Pivot Table, công thức nâng cao và biểu đồ động.</p>
+            <p><strong>Người mới bắt đầu</strong> · Miễn phí</p>
+            <a href="/courses/excel" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            <h3>Node.js thực chiến</h3>
+            <p>
+              Xây dựng REST API và hệ thống xác thực người dùng bằng Express.js.
+            </p>
+            <p><strong>Trung cấp</strong> · Miễn phí</p>
+            <a href="/courses/node" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            <h3>Thiết kế UI/UX</h3>
+            <p>
+              Nguyên lý thiết kế giao diện người dùng đẹp, đơn giản và thân
+              thiện.
+            </p>
+            <p><strong>Người mới bắt đầu</strong> · Miễn phí</p>
+            <a href="/courses/ui-ux" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            <h3>Machine Learning</h3>
+            <p>Xây dựng mô hình dự đoán với Scikit-Learn, Pandas và NumPy.</p>
+            <p><strong>Nâng cao</strong> · Miễn phí</p>
+            <a href="/courses/ml" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            <h3>Photoshop cơ bản</h3>
+            <p>Chỉnh sửa ảnh, thiết kế banner và poster với Photoshop.</p>
+            <p><strong>Người mới bắt đầu</strong> · Miễn phí</p>
+            <a href="/courses/photoshop" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            <h3>Agile & Scrum</h3>
+            <p>
+              Áp dụng mô hình Agile để quản lý nhóm và phát triển phần mềm linh
+              hoạt.
+            </p>
+            <p><strong>Trung cấp</strong> · Miễn phí</p>
+            <a href="/courses/agile" class="help-link">Học ngay</a>
+          </div>
+          <div class="help-card">
+            <h3>Lập trình hệ thống nâng cao</h3>
+            <p>
+              Hiểu sâu về quản lý bộ nhớ, tiến trình và giao tiếp IPC trong hệ
+              điều hành Unix/Linux.
+            </p>
+            <p><strong>Nâng cao</strong> · Miễn phí</p>
+            <a href="/courses/system" class="help-link">Học ngay</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div th:replace="~{footer :: footer}"></div>
+    <div th:replace="~{chat-modal :: chat-modal}"></div>
+  </body>
+</html>
