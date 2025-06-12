@@ -3,6 +3,15 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.log
+logs/
 
 ### STS ###
 .apt_generated
@@ -36,20 +45,23 @@ build/
 .project
 .settings/
 
-# Logs
-*.log
-logs/
+# Spring Boot specific
+/build/
+/classes/
+/out/
+/test-results/
+/native/
+/bin/
+.project
+!/.mvn/wrapper/maven-wrapper.jar
+!/.mvn/wrapper/MavenWrapperDownloader.java
+!src/main/resources/application.properties # Remove this line if you want to ignore application.properties
+!src/main/resources/application.yml     # Remove this line if you want to ignore application.yml
+!src/main/resources/bootstrap.properties # Remove this line if you want to ignore bootstrap.properties
+!src/main/resources/bootstrap.yml     # Remove this line if you want to ignore bootstrap.yml
 
-# Project specific
-.project/
-.settings/
-.classpath
-# Enforce LF for all text files
-* text=auto eol=lf
-
-# Binary files should not be converted
-*.jar binary
-*.zip binary
-*.png binary
-*.jpg binary
-# ... any other binary files
+# Operating System files
+.DS_Store
+Thumbs.db
+.localized
+.gradle
