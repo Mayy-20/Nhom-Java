@@ -1,0 +1,302 @@
+body {
+            font-family: 'Menlo', 'Hack', 'Pixelgrid', monospace;
+            margin: 0;
+            background: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+        .nav-bar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 1.5rem;
+            position: fixed;
+            top: 0;
+            width: 97%;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+	.nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: #4ecdc4;
+            transform: translateY(-2px);
+        }
+        
+        .auth-buttons a {
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            transform: perspective(1px) translateZ(0);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+	
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 120px 0 70px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+	    
+		
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero-text {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .join-button {
+            background: white;
+            color: #9333EA;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+        }
+        .join-button:hover {
+            background: #f3f4f6;
+            color: #9333EA;
+        }
+        .sidebar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 250px;
+            background: #ffffff;
+            padding: 1rem;
+            height: calc(100% - 60px);
+            overflow-y: auto;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+        }
+        .sidebar h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 0.5rem;
+        }
+        .sidebar ul li a {
+            color: #1f2937;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .sidebar ul li a:hover {
+            color: #9333EA;
+        }
+        .posts-section {
+            margin-left: 250px;
+            padding: 2rem 0;
+        }
+        .post-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .post-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .main-container {
+                padding: 0 1.5rem;
+            }
+            .sidebar {
+                display: block;
+		
+            }
+        }
+        @media (min-width: 1024px) {
+            .post-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .post-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e5e7eb;
+            transition: transform 0.2s, box-shadow 0.2s;
+            overflow-wrap: break-word;
+        }
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .post-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+        .post-content {
+            color: #4b5563;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .meta-text {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        .action-link {
+            color: #9333EA;
+            text-decoration: none;
+        }
+        .action-link:hover {
+            text-decoration: underline;
+        }
+        .gold-rank {
+            color: #eab308;
+            font-weight: 600;
+        }
+        .silver-rank {
+            color: #9ca3af;
+            font-weight: 600;
+        }
+        .bronze-rank {
+            color: #d97706;
+            font-weight: 600;
+        }
+        .filter-buttons {
+            margin-bottom: 1.5rem;
+        }
+        .filter-buttons button {
+            background: none;
+            border: 1px solid #e5e7eb;
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #1f2937;
+            transition: background 0.3s;
+        }
+        .filter-buttons button:hover {
+            background: #e5e7eb;
+        }
+        .filter-buttons button.active {
+            background: #9333EA;
+            color: white;
+            border-color: #9333EA;
+        }
+        .news-section, .events-section {
+            margin-bottom: 2rem;
+        }
+        .news-card, .event-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 1rem;
+        }
+        .news-card a, .event-card a {
+            color: #9333EA;
+            text-decoration: none;
+        }
+        .news-card a:hover, .event-card a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+ 	    margin-left: 280px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+	    text-align: left;
+        }
+        .footer-section h3 {
+	    text-align: left;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+	    color: #4ecdc4;
+        }
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+	    
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        .muted-text {
+            color: #9ca3af;
+        }
